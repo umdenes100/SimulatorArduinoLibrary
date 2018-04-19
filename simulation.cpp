@@ -2,21 +2,21 @@
 
 
 Coordinate::Coordinate() {
-    init(0, 0, 0);
+  init(0, 0, 0);
 }
 
 Coordinate::Coordinate(double x, double y) {
-    init(x, y, 0);
+  init(x, y, 0);
 }
 
 Coordinate::Coordinate(double x, double y, double theta) {
-    init(x, y, theta);
+  init(x, y, theta);
 }
 
 void Coordinate::init(double x, double y, double theta) {
-    this->x = x; 
-    this->y = y;
-    this->theta = theta;
+  this->x = x; 
+  this->y = y;
+  this->theta = theta;
 }
 
 DFRTankSimulation::DFRTankSimulation() {
@@ -36,27 +36,31 @@ void DFRTankSimulation::init(){
 };
 
 void DFRTankSimulation::setLeftMotorPWM(int pwm) {
-  
-  Serial.print("#l");
-  Serial.print(pwm);
-  Serial.println("*");
-  Serial.flush();
+  if (pwm <= 255) {
 
-  _left_motor_pwm = pwm;
-};
+    Serial.print("#l");
+    Serial.print(pwm);
+    Serial.println("*");
+    Serial.flush();
+
+    _left_motor_pwm = pwm;
+  }
+}
 
 void DFRTankSimulation::setRightMotorPWM(int pwm) {
-  
+  if (pwm <= 255) {
+
   Serial.print("#r");
   Serial.print(pwm);
   Serial.println("*#");
   Serial.flush();
 
   _right_motor_pwm = pwm;
-};
+}
+}
 
 void DFRTankSimulation::turnOffMotors() {
-  
+
   Serial.print("#r");
   Serial.print(0);
   Serial.println("*");
@@ -76,30 +80,30 @@ bool DFRTankSimulation::retrieveDestination() {
   Serial.flush();
 
   unsigned long start = millis();
-    int state = 0;
-    
-    while((millis() - start) < 600) {
-        if (Serial.available()) {
-            switch(state) {
-                case 0:
-                    destination.x = Serial.parseFloat();
-                    state++;
-                    break;
-                case 1:
-                    destination.y = Serial.parseFloat();
-                    state++;
-                    break;
-                case 2:
-                    return true;
-                    break;
-                default:
-                    return false;
-                    break;
-            }
-        }
+  int state = 0;
+
+  while((millis() - start) < 600) {
+    if (Serial.available()) {
+      switch(state) {
+        case 0:
+        destination.x = Serial.parseFloat();
+        state++;
+        break;
+        case 1:
+        destination.y = Serial.parseFloat();
+        state++;
+        break;
+        case 2:
+        return true;
+        break;
+        default:
+        return false;
+        break;
+      }
     }
-    
-    return false;
+  }
+
+  return false;
 
 }
 
@@ -109,30 +113,30 @@ bool DFRTankSimulation::updateLocation() {
   Serial.flush();
 
   unsigned long start = millis();
-    int state = 0;
-    
-    while((millis() - start) < 600) {
-        if(Serial.available()) {
-            switch(state) {
-                case 0:
-                    location.x = Serial.parseFloat();
-                    state++;
-                    break;
-                case 1:
-                    location.y = Serial.parseFloat();
-                    state++;
-                    break;
-                case 2:
-                    location.theta = Serial.parseFloat();
-                    return true;
-                    break;
-                default:
-                    return false;
-                    break;
-            }
-        }
+  int state = 0;
+
+  while((millis() - start) < 600) {
+    if(Serial.available()) {
+      switch(state) {
+        case 0:
+        location.x = Serial.parseFloat();
+        state++;
+        break;
+        case 1:
+        location.y = Serial.parseFloat();
+        state++;
+        break;
+        case 2:
+        location.theta = Serial.parseFloat();
+        return true;
+        break;
+        default:
+        return false;
+        break;
+      }
     }
-    return false;
+  }
+  return false;
 }
 
 float DFRTankSimulation::readUltrasonicSensor(int sensorIndex) {
@@ -142,43 +146,43 @@ float DFRTankSimulation::readUltrasonicSensor(int sensorIndex) {
   Serial.flush();
 
   unsigned long start = millis();
-    
-    while((millis() - start) < 600) {
-        if(Serial.available()) {
-            return Serial.parseFloat();
-        }
+
+  while((millis() - start) < 600) {
+    if(Serial.available()) {
+      return Serial.parseFloat();
     }
-    return 0;
+  }
+  return 0;
 }
 
 
 void DFRTankSimulation::print(const char *msg) {
-    Serial.print(msg);
-    Serial.flush();
+  Serial.print(msg);
+  Serial.flush();
 }
 
 void DFRTankSimulation::print(int msg) {
-    Serial.print(msg);
-    Serial.flush();
+  Serial.print(msg);
+  Serial.flush();
 }
 
 void DFRTankSimulation::print(double msg) {
-    Serial.print(msg);
-    Serial.flush();
+  Serial.print(msg);
+  Serial.flush();
 }
 
 // MARK: println
 void DFRTankSimulation::println(const char *msg) {
-    Serial.println(msg);
-    Serial.flush();
+  Serial.println(msg);
+  Serial.flush();
 }
 
 void DFRTankSimulation::println(int msg) {
-    Serial.println(msg);
-    Serial.flush();
+  Serial.println(msg);
+  Serial.flush();
 }
 
 void DFRTankSimulation::println(double msg) {
-    Serial.println(msg);
-    Serial.flush();
+  Serial.println(msg);
+  Serial.flush();
 }
