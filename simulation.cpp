@@ -52,7 +52,7 @@ void DFRTankSimulation::setRightMotorPWM(int pwm) {
 
     Serial.print("#r");
     Serial.print(pwm);
-    Serial.println("*#");
+    Serial.println("*");
     Serial.flush();
 
     _right_motor_pwm = pwm;
