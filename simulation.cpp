@@ -28,12 +28,12 @@ DFRTankSimulation::DFRTankSimulation(String name) {
   _right_motor_pwm = 0;
   this->teamName = String(name);
   Serial.print(name);
-};
+}
 
 void DFRTankSimulation::init(){ 
   //think about moving this line to the constructor and removing the method
   Serial.begin(9600);
-};
+}
 
 void DFRTankSimulation::setLeftMotorPWM(int pwm) {
   if (pwm <= 255) {
@@ -50,13 +50,13 @@ void DFRTankSimulation::setLeftMotorPWM(int pwm) {
 void DFRTankSimulation::setRightMotorPWM(int pwm) {
   if (pwm <= 255) {
 
-  Serial.print("#r");
-  Serial.print(pwm);
-  Serial.println("*#");
-  Serial.flush();
+    Serial.print("#r");
+    Serial.print(pwm);
+    Serial.println("*#");
+    Serial.flush();
 
-  _right_motor_pwm = pwm;
-}
+    _right_motor_pwm = pwm;
+  }
 }
 
 void DFRTankSimulation::turnOffMotors() {
@@ -108,7 +108,6 @@ bool DFRTankSimulation::retrieveDestination() {
 }
 
 bool DFRTankSimulation::updateLocation() {
-  //add Serial.flush(); here?
   Serial.println("#destination*");
   Serial.flush();
 
@@ -122,14 +121,17 @@ bool DFRTankSimulation::updateLocation() {
         location.x = Serial.parseFloat();
         state++;
         break;
+
         case 1:
         location.y = Serial.parseFloat();
         state++;
         break;
+
         case 2:
         location.theta = Serial.parseFloat();
         return true;
         break;
+
         default:
         return false;
         break;
