@@ -108,7 +108,7 @@ bool DFRTankSimulation::retrieveDestination() {
 }
 
 bool DFRTankSimulation::updateLocation() {
-  Serial.println("#destination*");
+  Serial.println("#location*");
   Serial.flush();
 
   unsigned long start = millis();
@@ -144,7 +144,7 @@ bool DFRTankSimulation::updateLocation() {
 float DFRTankSimulation::readUltrasonicSensor(int sensorIndex) {
   Serial.print("#distance");
   Serial.print(sensorIndex);
-  Serial.print("*");
+  Serial.println("*");
   Serial.flush();
 
   unsigned long start = millis();
