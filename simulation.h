@@ -48,7 +48,7 @@ class DFRTankSimulation {
     Coordinate destination;
     Coordinate location;
 
-    float readUltrasonicSensor(int sensorIndex);
+    float readDistanceSensor(int sensorIndex);
 
 
     void print(const char *msg);

@@ -141,7 +141,7 @@ bool DFRTankSimulation::updateLocation() {
   return false;
 }
 
-float DFRTankSimulation::readUltrasonicSensor(int sensorIndex) {
+float DFRTankSimulation::readDistanceSensor(int sensorIndex) {
   Serial.print("#distance");
   Serial.print(sensorIndex);
   Serial.println("*");
