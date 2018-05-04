@@ -36,27 +36,35 @@ void DFRTankSimulation::init(){
 }
 
 void DFRTankSimulation::setLeftMotorPWM(int pwm) {
-  if (pwm <= 255) {
-
-    Serial.print("#l");
-    Serial.print(pwm);
-    Serial.println("*");
-    Serial.flush();
-
-    _left_motor_pwm = pwm;
+  if (pwm > 255) {
+    pwm = 255;
+  } else if (pwm < -255) {
+    pwm = -255;
   }
+
+  Serial.print("#l");
+  Serial.print(pwm);
+  Serial.println("*");
+  Serial.flush();
+
+  _left_motor_pwm = pwm;
+
 }
 
 void DFRTankSimulation::setRightMotorPWM(int pwm) {
-  if (pwm <= 255) {
-
-    Serial.print("#r");
-    Serial.print(pwm);
-    Serial.println("*");
-    Serial.flush();
-
-    _right_motor_pwm = pwm;
+  if (pwm > 255) {
+    pwm = 255;
+  } else if (pwm < -255) {
+    pwm = -255;
   }
+
+  Serial.print("#r");
+  Serial.print(pwm);
+  Serial.println("*");
+  Serial.flush();
+
+  _right_motor_pwm = pwm;
+  
 }
 
 void DFRTankSimulation::turnOffMotors() {
