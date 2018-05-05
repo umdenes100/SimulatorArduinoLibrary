@@ -44,7 +44,7 @@ void DFRTankSimulation::setLeftMotorPWM(int pwm) {
 
   Serial.print("#l");
   Serial.print(pwm);
-  Serial.println("*");
+  Serial.print("*");
   Serial.flush();
 
   _left_motor_pwm = pwm;
@@ -60,7 +60,7 @@ void DFRTankSimulation::setRightMotorPWM(int pwm) {
 
   Serial.print("#r");
   Serial.print(pwm);
-  Serial.println("*");
+  Serial.print("*");
   Serial.flush();
 
   _right_motor_pwm = pwm;
@@ -71,11 +71,11 @@ void DFRTankSimulation::turnOffMotors() {
 
   Serial.print("#r");
   Serial.print(0);
-  Serial.println("*");
+  Serial.print("*");
 
   Serial.print("#l");
   Serial.print(0);
-  Serial.println("*");
+  Serial.print("*");
 
   Serial.flush();
 
@@ -84,7 +84,7 @@ void DFRTankSimulation::turnOffMotors() {
 };
 
 bool DFRTankSimulation::retrieveDestination() {
-  Serial.println("#destination*");
+  Serial.print("#destination*");
   Serial.flush();
 
   unsigned long start = millis();
@@ -116,7 +116,7 @@ bool DFRTankSimulation::retrieveDestination() {
 }
 
 bool DFRTankSimulation::updateLocation() {
-  Serial.println("#location*");
+  Serial.print("#location*");
   Serial.flush();
 
   unsigned long start = millis();
@@ -152,7 +152,7 @@ bool DFRTankSimulation::updateLocation() {
 float DFRTankSimulation::readDistanceSensor(int sensorIndex) {
   Serial.print("#distance");
   Serial.print(sensorIndex);
-  Serial.println("*");
+  Serial.print("*");
   Serial.flush();
 
   unsigned long start = millis();
