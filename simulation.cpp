@@ -1,37 +1,12 @@
 #include "simulation.h"
-
-
-Coordinate::Coordinate() {
-  init(0, 0, 0);
-}
-
-Coordinate::Coordinate(double x, double y) {
-  init(x, y, 0);
-}
-
-Coordinate::Coordinate(double x, double y, double theta) {
-  init(x, y, theta);
-}
-
-void Coordinate::init(double x, double y, double theta) {
-  this->x = x; 
-  this->y = y;
-  this->theta = theta;
-}
+#include "Coordinate.h"
 
 DFRTankSimulation::DFRTankSimulation() {
-  DFRTankSimulation("TeamNoName");
-}
-
-DFRTankSimulation::DFRTankSimulation(String name) {
   _left_motor_pwm = 0;
   _right_motor_pwm = 0;
-  this->teamName = String(name);
-  Serial.print(name);
 }
 
 void DFRTankSimulation::init(){ 
-  //think about moving this line to the constructor and removing the method
   Serial.begin(9600);
 }
 
