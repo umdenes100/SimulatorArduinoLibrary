@@ -1,38 +1,44 @@
-#include <simulation.h>
+#include "Enes100Simulation.h"
+#include "DFRTankSimulation.h"
+
 #define abs(x) ((x)>0?(x):-(x))
-#define MaxPWM 255
+
+Enes100Simulation enes;
 DFRTankSimulation tank;
 
 void setup() {
 
   tank.init();
 
-  tank.println("Starting Navigation");
+  enes.println("Starting Navigation");
 
-  while (!tank.retrieveDestination());
+  while (!enes.retrieveDestination());
 
-  while (!tank.updateLocation());
+  while (!enes.updateLocation());
 
 }
 
 void loop() {
 
-  while (abs(tank.location.theta) > 0.05) {
+  //turn to face forward
+  while (abs(enes.location.theta) > 0.05) {
 
-    tank.setLeftMotorPWM(MaxPWM);
-    tank.setRightMotorPWM(- MaxPWM);
+    tank.setLeftMotorPWM(255);
+    tank.setRightMotorPWM(-255);
 
-    while (!tank.updateLocation());
+    while (!enes.updateLocation());
     
   }
 
-  tank.setLeftMotorPWM(MaxPWM);
-  tank.setRightMotorPWM(MaxPWM);
+  //move forward
+  tank.setLeftMotorPWM(255);
+  tank.setRightMotorPWM(255);
 
-  while (tank.readDistanceSensor(1) > 0.2) ;
+  while (enes.readDistanceSensor(1) > 0.2) ;
 
+  //stop once an obstacle is seen
   tank.turnOffMotors();
-  tank.println("Found Obstacle");
+  enes.println("Found Obstacle");
 
   while(1);
 
