@@ -30,7 +30,6 @@ The functions associated with the DFRTankSimulation object control the movement 
 
 This function simply stops the OSV by setting both motor PWM's to zero.
 
-
 `void setRightMotorPWM()`
 
 This function sets the PWM of the tank's right motor. It accepts one argument (an integer), which should be in the range [-255, 255]
