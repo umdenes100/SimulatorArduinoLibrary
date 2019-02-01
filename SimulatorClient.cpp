@@ -1,10 +1,10 @@
-#include "Enes100Simulation.h"
+#include "SimulatorClient.h"
 
-Enes100Simulation::Enes100Simulation() {
+SimulatorClient::SimulatorClient() {
 
 }
 
-bool Enes100Simulation::retrieveDestination() {
+bool SimulatorClient::begin() {
     Serial.print("#destination*");
     Serial.flush();
 
@@ -36,7 +36,7 @@ bool Enes100Simulation::retrieveDestination() {
 
 }
 
-bool Enes100Simulation::updateLocation() {
+bool SimulatorClient::updateLocation() {
   Serial.print("#location*");
   Serial.flush();
 
@@ -70,7 +70,7 @@ bool Enes100Simulation::updateLocation() {
   return false;
 }
 
-float Enes100Simulation::readDistanceSensor(int sensorIndex) {
+float SimulatorClient::readDistanceSensor(int sensorIndex) {
     Serial.print("#distance");
     Serial.print(sensorIndex);
     Serial.print("*");
@@ -87,34 +87,34 @@ float Enes100Simulation::readDistanceSensor(int sensorIndex) {
     return 0;
 }
 
-
-void Enes100Simulation::print(const char *msg) {
+void SimulatorClient::print(const char *msg) {
     Serial.print(msg);
     Serial.flush();
 }
 
-void Enes100Simulation::print(int msg) {
+void SimulatorClient::print(int msg) {
     Serial.print(msg);
     Serial.flush();
 }
 
-void Enes100Simulation::print(double msg) {
+void SimulatorClient::print(double msg) {
     Serial.print(msg);
     Serial.flush();
 }
 
 // MARK: println
-void Enes100Simulation::println(const char *msg) {
+void SimulatorClient::println(const char *msg) {
     Serial.println(msg);
     Serial.flush();
 }
 
-void Enes100Simulation::println(int msg) {
+void SimulatorClient::println(int msg) {
     Serial.println(msg);
     Serial.flush();
 }
 
-void Enes100Simulation::println(double msg) {
+void SimulatorClient::println(double msg) {
     Serial.println(msg);
     Serial.flush();
 }
+

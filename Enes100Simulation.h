@@ -1,57 +1,24 @@
 #ifndef Enes100Simulation_h
 #define Enes100Simulation_h
 
-#include <Arduino.h>
+#include "SimulatorClient.h"
 
-#ifndef Coordinate_h
-#define Coordinate_h
+#define BASE        0
+#define BONUS       1
 
-class Coordinate {
-public:
-    double x;
-    double y;
-    double theta;
-    Coordinate() {
-        init(0, 0, 0);
-    }
+#define BLACK_BOX   0
+#define CHEMICAL    1
+#define DEBRIS      2
+#define FIRE        3
+#define WATER       4
 
-    Coordinate(double x, double y) {
-        init(x, y, 0);
-    }
+#define FRESH       0
+#define POLLUTED    1
+#define SALT        2
 
-    Coordinate(double x, double y, double theta) {
-        init(x, y, theta);
-    }
-private:
-    void init(double x, double y, double theta) {
-        this->x = x;
-        this->y = y;
-        this->theta = theta;
-    }
-};
-#endif
+#define COPPER      0
+#define STEEL       1
 
-class Enes100Simulation {
+SimulatorClient Enes100Simulation;
 
-public:
-
-    Coordinate destination;
-    Coordinate location;
-
-    Enes100Simulation();
-
-    bool retrieveDestination();
-    bool updateLocation();
-    float readDistanceSensor(int sensorIndex);
-
-    void print(const char *msg);
-    void print(int msg);
-    void print(double msg);
-
-    void println(const char *msg);
-    void println(int msg);
-    void println(double msg);
-
-};
-
-#endif
+#endif /* Enes100Simulation_h */

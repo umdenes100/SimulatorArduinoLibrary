@@ -1,14 +1,14 @@
-#ifndef DFRTankSimulation_h
-#define DFRTankSimulation_h
+#ifndef TankSimulation_h
+#define TankSimulation_h
 
 #include <Arduino.h>
 
-class DFRTankSimulation {
+class TankSimulation {
 
 public:
 
-    DFRTankSimulation();
-    void init();
+    TankSimulation();
+    void begin();
 
     void turnOffMotors();
     void setRightMotorPWM(int pwm);

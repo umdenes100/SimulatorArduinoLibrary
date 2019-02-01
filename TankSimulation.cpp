@@ -1,14 +1,14 @@
-#include "DFRTankSimulation.h"
+#include "TankSimulation.h"
 
-DFRTankSimulation::DFRTankSimulation() {
+TankSimulation::TankSimulation() {
 
 }
 
-void DFRTankSimulation::init(){ 
+void TankSimulation::begin(){ 
   Serial.begin(9600);
 }
 
-void DFRTankSimulation::setLeftMotorPWM(int pwm) {
+void TankSimulation::setLeftMotorPWM(int pwm) {
     if (pwm > 255) {
         pwm = 255;
     } else if (pwm < -255) {
@@ -22,7 +22,7 @@ void DFRTankSimulation::setLeftMotorPWM(int pwm) {
 
 }
 
-void DFRTankSimulation::setRightMotorPWM(int pwm) {
+void TankSimulation::setRightMotorPWM(int pwm) {
     if (pwm > 255) {
         pwm = 255;
     } else if (pwm < -255) {
@@ -36,7 +36,7 @@ void DFRTankSimulation::setRightMotorPWM(int pwm) {
   
 }
 
-void DFRTankSimulation::turnOffMotors() {
+void TankSimulation::turnOffMotors() {
 
     Serial.print("#r");
     Serial.print(0);
