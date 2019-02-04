@@ -25,6 +25,9 @@ baseObjective(blackBox);
 
 The functions associated with the TankSimulation object control the movement of the OSV. 
 
+`bool begin()`
+
+This function initializes the tank object.
 
 `void turnOffMotors()`
 
