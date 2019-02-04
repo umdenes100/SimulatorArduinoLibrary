@@ -21,9 +21,9 @@ Coordinate blackBox(3.2, 1.6);
 baseObjective(blackBox);
 ```
 
-### DFRTankSimulation Object ###
+### TankSimulation Object ###
 
-The functions associated with the DFRTankSimulation object control the movement of the OSV. 
+The functions associated with the TankSimulation object control the movement of the OSV. 
 
 
 `void turnOffMotors()`
@@ -44,7 +44,7 @@ This function sets the PWM of the tank's left motor. It accepts one argument (an
 The functions associated with the Enes100Simulation object provide information about the OSV's location, destination, and distance sensor readings. They also allow print messages to be sent to the console for debugging purposes. 
 
 
-`bool retrieveDestination()`
+`bool begin()`
 
 This function retrieves the destination for the current run from the simulator, stores the destination in the destination variable, and returns true or false depending on the success of the call. This function should be encapsulated in a while loop to ensure that the OSV has retrieved the destination before begining the run.
 
