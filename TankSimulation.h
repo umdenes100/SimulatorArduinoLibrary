@@ -3,11 +3,11 @@
 
 #include <Arduino.h>
 
-class TankSimulation {
+class TankSim {
 
 public:
 
-    TankSimulation();
+    TankSim();
     void begin();
 
     void turnOffMotors();

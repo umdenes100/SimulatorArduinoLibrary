@@ -1,7 +1,10 @@
 #ifndef Enes100Simulation_h
 #define Enes100Simulation_h
 
+#include "TankSimulation.h"
 #include "SimulatorClient.h"
+
+#define abs(x) ((x)>0?(x):-(x))
 
 #define BASE        0
 #define BONUS       1
@@ -20,5 +23,6 @@
 #define STEEL       1
 
 SimulatorClient Enes100Simulation;
+TankSim TankSimulation;
 
 #endif /* Enes100Simulation_h */

@@ -5,13 +5,15 @@ SimulatorClient::SimulatorClient() {
 }
 
 bool SimulatorClient::begin() {
+    Serial.begin(9600);
+
     Serial.print("#destination*");
     Serial.flush();
 
     unsigned long start = millis();
     int state = 0;
 
-    while((millis() - start) < 600) {
+    while((millis() - start) < 300) {
         if (Serial.available()) {
             switch(state) {
                 case 0:
@@ -43,7 +45,7 @@ bool SimulatorClient::updateLocation() {
   unsigned long start = millis();
   int state = 0;
 
-  while((millis() - start) < 600) {
+  while((millis() - start) < 300) {
     if(Serial.available()) {
       switch(state) {
         case 0:
@@ -78,7 +80,7 @@ float SimulatorClient::readDistanceSensor(int sensorIndex) {
 
     unsigned long start = millis();
 
-    while((millis() - start) < 600) {
+    while((millis() - start) < 300) {
         if(Serial.available()) {
             return Serial.parseFloat();
         }

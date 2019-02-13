@@ -1,14 +1,14 @@
 #include "TankSimulation.h"
 
-TankSimulation::TankSimulation() {
+TankSim::TankSim() {
 
 }
 
-void TankSimulation::begin(){ 
+void TankSim::begin(){ 
   Serial.begin(9600);
 }
 
-void TankSimulation::setLeftMotorPWM(int pwm) {
+void TankSim::setLeftMotorPWM(int pwm) {
     if (pwm > 255) {
         pwm = 255;
     } else if (pwm < -255) {
@@ -22,7 +22,7 @@ void TankSimulation::setLeftMotorPWM(int pwm) {
 
 }
 
-void TankSimulation::setRightMotorPWM(int pwm) {
+void TankSim::setRightMotorPWM(int pwm) {
     if (pwm > 255) {
         pwm = 255;
     } else if (pwm < -255) {
@@ -36,7 +36,7 @@ void TankSimulation::setRightMotorPWM(int pwm) {
   
 }
 
-void TankSimulation::turnOffMotors() {
+void TankSim::turnOffMotors() {
 
     Serial.print("#r");
     Serial.print(0);
