@@ -6,6 +6,7 @@ SimulatorClient::SimulatorClient() {
 
 bool SimulatorClient::begin() {
     Serial.begin(9600);
+    Serial.setTimeout(300);
 
     Serial.print("#destination*");
     Serial.flush();
@@ -104,7 +105,6 @@ void SimulatorClient::print(double msg) {
     Serial.flush();
 }
 
-// MARK: println
 void SimulatorClient::println(const char *msg) {
     Serial.println(msg);
     Serial.flush();
