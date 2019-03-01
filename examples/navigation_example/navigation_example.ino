@@ -3,7 +3,9 @@
 
 void setup() {
   TankSimulation.begin();
-  Enes100Simulation.begin();
+  while(!Enes100Simulation.begin()) {
+    Enes100Simulation.println("Unable to connect to simulation");
+  }
 
   Enes100Simulation.println("Starting Navigation");
 
